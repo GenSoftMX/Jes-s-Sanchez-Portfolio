@@ -1,0 +1,232 @@
+{
+  "schema": "vostok.installation-registry.v1",
+  "installed_at": "2026-11-19T16:53:52.041621+00:00",
+  "vostok_version": "0.3.3-beta.3",
+  "manifest_version": "v1",
+  "profile": "core",
+  "plan_digest": "3d737188d2fec9b17e81302dc710eece147ac58eb261c6841075c785c522b3d6",
+  "managed_files": [
+    {
+      "path": ".agents/skills/feature-delivery/SKILL.md",
+      "installed_sha256": "1bdf43b12e34d38b7bf808a8503fe4cf600a1b9838354a172a9739f22673da42"
+    },
+    {
+      "path": ".agents/skills/i3-independent-preacceptance-audit/SKILL.md",
+      "installed_sha256": "f822ba99981bf0231dd0a51247553dcb76f8bb790c6271fd24822e0cbd93a187"
+    },
+    {
+      "path": ".agents/skills/present-information/SKILL.md",
+      "installed_sha256": "88a4f7d685abe9fce56d5cb0c344ed8d91c29e2c1d100c8a56d2d3d7f7fe7be1"
+    },
+    {
+      "path": ".claude/skills/feature-delivery/SKILL.md",
+      "installed_sha256": "f802e98cffabc11ea193d54bd100656400b03167434661b887d09a2c99e60829"
+    },
+    {
+      "path": ".claude/skills/i3-independent-preacceptance-audit/SKILL.md",
+      "installed_sha256": "431077b6bcaa0e607afdb71fa58cffbdccc9efdede294d8299fe7d2893ad9c5c"
+    },
+    {
+      "path": ".claude/skills/present-information/SKILL.md",
+      "installed_sha256": "f89dfb1ce3ee1f45b905c20ecbfa40cd66849a823192fb0abd3ee6263ed1cfac"
+    },
+    {
+      "path": ".codex/skills/feature-delivery/SKILL.md",
+      "installed_sha256": "7ca47eeac2fdabe833481a30cba71125dd235465eea9bf0a929d5c27d11ff540"
+    },
+    {
+      "path": ".codex/skills/i3-independent-preacceptance-audit/SKILL.md",
+      "installed_sha256": "f98a75028b0b5eb4726ffc3c6517a142c39974219498dc5cc181cc529aeb25fe"
+    },
+    {
+      "path": ".codex/skills/present-information/SKILL.md",
+      "installed_sha256": "38b7a83a484c227661c515e0a14564452c2ea40865705690a4c67a46afbd01ba"
+    },
+    {
+      "path": ".cursor/rules/feature-delivery.mdc",
+      "installed_sha256": "1b29f47b52db46d9ef6d96b2c803ccaee6710608b398691d2bbf15ab7d415d3a"
+    },
+    {
+      "path": ".cursor/rules/i3-independent-preacceptance-audit.mdc",
+      "installed_sha256": "dc5ad5e1c7be42245d063e793ee02bc663455e4ba44e26dcab07e8524790e85d"
+    },
+    {
+      "path": ".cursor/rules/present-information.mdc",
+      "installed_sha256": "8ebe3bc0a9b1ddc06aa78bf4f5b3f1dcfea6dd40c0b6fc4cfeda910196847214"
+    },
+    {
+      "path": ".vostok/rules/context-selection.md",
+      "installed_sha256": "f4e9faa1da685c0f8408f022e4fff1f17084241c1def6bb9f7a378fc1238567c"
+    },
+    {
+      "path": ".vostok/rules/developer-continuity.md",
+      "installed_sha256": "2c026ed4ef92ec07691db8a2ad9d8d4d5ac3af6d96314bb4380d31771e5398c8"
+    },
+    {
+      "path": ".vostok/rules/evidence-honesty.md",
+      "installed_sha256": "41055f4885386bb8544e020c3f159651892fa3b0665386e393cc3eaeff5fbb38"
+    },
+    {
+      "path": ".vostok/rules/grades-proportionality.md",
+      "installed_sha256": "0f8c572ebb5d5731734f1fb632592d721c7950c70c16dfa9998db7e7eab6c5d1"
+    },
+    {
+      "path": ".vostok/rules/no-commits-without-approval.md",
+      "installed_sha256": "19efe1dee6d41a4ba8012aadc76d3c9cfbbbd3723698c58b16d36621bfbf3ccf"
+    },
+    {
+      "path": ".vostok/rules/placement-and-sources.md",
+      "installed_sha256": "8c039bc0570d6ec576c43dca95536570fcb89cb6456f43806f09a58b5c49293e"
+    },
+    {
+      "path": ".vostok/rules/presentation-design.md",
+      "installed_sha256": "d094da8898253e74db1c4e1aba6f65ab09ced82ecd4aeab91d345fd34f725148"
+    },
+    {
+      "path": ".vostok/rules/visible-language.md",
+      "installed_sha256": "6b5d91ca2848fc5dd170c518541e4f35db29ed1e0d2d89a752abb18b99432c79"
+    },
+    {
+      "path": ".vostok/skills/i3-independent-preacceptance-audit/SKILL.md",
+      "installed_sha256": "30946c7e07cd7b26e9f0bc36f8cacb461d69bd56afa33b5618de1dbd5d48e867"
+    },
+    {
+      "path": ".vostok/skills/present-information/SKILL.md",
+      "installed_sha256": "e79df4643ffa0390c14806178846d36dc8891d2aa8cfcd6cb916b14b7bb6ed72"
+    },
+    {
+      "path": ".vostok/skills/vostok-rules/SKILL.md",
+      "installed_sha256": "a2727473cf4fb630b7ba247aaa9dcdedaef7edc047d9753b9164d8506c75d166"
+    },
+    {
+      "path": ".vostok/skills/vostok-rules/scripts/check_scope_evidence.py",
+      "installed_sha256": "dd5da61d85de007764cce59fb97e3211cf5f248cf1576729c06f731b49dd31cc"
+    },
+    {
+      "path": ".vostok/skills/vostok-rules/scripts/cursor_g2_gate.py",
+      "installed_sha256": "682297f1d2b7c60110015fe3904c78819148f7ac8471c194ae663fb9b1202b14"
+    },
+    {
+      "path": ".vostok/skills/vostok-rules/scripts/repository_rule_cache.py",
+      "installed_sha256": "c4d058616baa28ed6f151ae85cb709cbcd0c312ec99c9235a8a1e085e95c3df4"
+    },
+    {
+      "path": ".vostok/skills/vostok-rules/scripts/repository_rule_contracts.py",
+      "installed_sha256": "0cb6b461c6acde89efd879f82b0dd67f02a762b6e1971bf3ea971067de6f720b"
+    },
+    {
+      "path": ".vostok/skills/vostok-rules/scripts/repository_rule_evaluator.py",
+      "installed_sha256": "2f20625c73df030d00333e8050a153a67f3090d7d0f83387697186dff0668053"
+    },
+    {
+      "path": ".vostok/skills/vostok-rules/scripts/repository_rule_protection.py",
+      "installed_sha256": "4268209a559844bcdb3eff5f9f7454c72f520d880269126e1e3b2f7619b39178"
+    },
+    {
+      "path": ".vostok/skills/vostok-rules/scripts/repository_rules.py",
+      "installed_sha256": "cabfc609189b2b180f5c00569f474f4c2604a1c848f94cf7b5112d3a0223d463"
+    },
+    {
+      "path": ".vostok/skills/vostok-rules/scripts/repository_rules_install.py",
+      "installed_sha256": "54861d5ef09769cb21adbe7aebe6b9115bf7acb1122b319805b0e01556cadaf7"
+    },
+    {
+      "path": ".vostok/templates/context-manifest.md",
+      "installed_sha256": "e652c186b432e2be332793436469e7da672221810977f179433c53a2c4ddc115"
+    },
+    {
+      "path": ".vostok/templates/criterion-states.md",
+      "installed_sha256": "aaa588a38966c33cdb3b49c0bad8527eea62877de1fd8efa303122a2915b9149"
+    },
+    {
+      "path": ".vostok/templates/decision-brief.md",
+      "installed_sha256": "f7eab7644adaeac58f186772c338e4c92549bc11c0ab2a595a56f1c8ba627269"
+    },
+    {
+      "path": ".vostok/templates/eco.md",
+      "installed_sha256": "5688bd5ba57aaa5e6e1f6b7c1dfe42a08ab12cbdd02443d62b5ed78378c33062"
+    },
+    {
+      "path": ".vostok/templates/evidence-pack.md",
+      "installed_sha256": "c57eb318ff6e49d54aed7f9e1205499a440b6cb322b201670a651443726255ff"
+    },
+    {
+      "path": ".vostok/templates/evidence-record.md",
+      "installed_sha256": "5e8d4079c2b4f0ca4d1c462002fb838c988df8f4e4d7b7931e1cb0b3ddd08773"
+    },
+    {
+      "path": ".vostok/templates/evidence-record/1.0.0.schema.json",
+      "installed_sha256": "d02e431c8e8afb0fc53111b44212db10da124ac8ad5abdb1c33c8fd16aa90898"
+    },
+    {
+      "path": ".vostok/templates/handoff.md",
+      "installed_sha256": "ec0e24b662bbeaaf86b656435a73053217492e7f03791e8b8986686602cbee5d"
+    },
+    {
+      "path": ".vostok/templates/intention.md",
+      "installed_sha256": "9fd9ca93007cf843ccf76a0c20dd04246d7128204f6796c8565d36e9e9303b2d"
+    },
+    {
+      "path": ".vostok/templates/spec-closure-claims-matrix.md",
+      "installed_sha256": "7aad225a2f94ed4fb2d77e8897c8b25d3c25bac9fbeb0b7b423b8d3dd26bed7f"
+    },
+    {
+      "path": ".vostok/templates/spec-closure-decision-log.md",
+      "installed_sha256": "4da28b1d92942cbca1349246c127c4900cb802c15db4c806de2e6995ea75003d"
+    },
+    {
+      "path": ".vostok/templates/spec-closure-deleted-inventory.md",
+      "installed_sha256": "5e766c42caf8904cfd95f7265bd3b9503b38c79e2fabd4bfb999c87db123b572"
+    },
+    {
+      "path": ".vostok/templates/spec-closure.md",
+      "installed_sha256": "20562648d8c4ae74f7e10e702ef4d7064052171735db95fd44aa88f7b11f8617"
+    },
+    {
+      "path": ".vostok/templates/verdict.md",
+      "installed_sha256": "36292cbf9e6247f5f05ca82c79332a4222e2716c5f3f0277bd52d4740fd5a1d9"
+    },
+    {
+      "path": ".vostok/templates/verification-record.md",
+      "installed_sha256": "098bce8405b9377980534012eaeb56f96bc0fd5af768b06f6d27999d545ddcd3"
+    },
+    {
+      "path": ".vostok/workflows/catalog-minimum.md",
+      "installed_sha256": "5d83b222bb65379c847380e990d6a1bce6157654c91a76a06d3d75f09914e7c0"
+    },
+    {
+      "path": ".vostok/workflows/context-selection-step.md",
+      "installed_sha256": "5c58aed8a0870b25644f2f5bd4a415d9ed7a9fcc72f3b43095f3dbf43bd256d1"
+    },
+    {
+      "path": ".vostok/workflows/feature-delivery-detail.md",
+      "installed_sha256": "abfd8bb3b44af7fb36bdf9bbb06d13e6ac0588aacdb11767a18f6eff19286ec4"
+    },
+    {
+      "path": ".vostok/workflows/feature-delivery.md",
+      "installed_sha256": "2a2e471510c0cc419c8f069cfef076ebc42d788725647c5f66729e060f1df552"
+    },
+    {
+      "path": ".vostok/workflows/i3-independent-preacceptance-audit.md",
+      "installed_sha256": "9053b67ba5e8512b13aba70930cccaf4e85a6091acca272e403c6511dde1cb94"
+    },
+    {
+      "path": ".vostok/workflows/present-information.md",
+      "installed_sha256": "50ef4bc5400aa41f1b96814c80ca7cedca49de325ecc98fde5cc3c74686de5ec"
+    },
+    {
+      "path": ".vostok/workflows/spec-closure.md",
+      "installed_sha256": "4f9e58bdae80e015b582c5c955c1a1374b28773ed94be9329e56d8c5dfa7fbfd"
+    },
+    {
+      "path": "AGENTS.md",
+      "installed_sha256": "25196a0c6905f1bdfd428ea7ef8347fbabc79355be163d77e49a2743f3ca0e7f"
+    },
+    {
+      "path": "CLAUDE.md",
+      "installed_sha256": "28d0c2abc2312bc0c75ea82df6c078cd352ba4bcba61291d2bee1256473e4146"
+    }
+  ],
+  "preserved_preexisting": [],
+  "shared_entrypoints": []
+}

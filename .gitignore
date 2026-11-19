@@ -1,0 +1,4 @@
+# Vostok local runtime and telemetry
+.vostok/events.jsonl
+.vostok/metrics.jsonl
+.vostok/backups/

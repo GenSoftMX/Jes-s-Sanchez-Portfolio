@@ -1,0 +1,26 @@
+{
+  "schema": "vostok.telemetry-config.v1",
+  "policy_mode": "third_party_opt_in",
+  "local": {
+    "enabled": true,
+    "events_path": ".vostok/events.jsonl",
+    "metrics_path": ".vostok/metrics.jsonl",
+    "max_file_mb": 10
+  },
+  "external": {
+    "enabled": false,
+    "transport": "otlp_http_json",
+    "endpoint": "",
+    "auth_header_env": "VOSTOK_TELEMETRY_TOKEN",
+    "timeout_ms": 1500,
+    "batch_size": 25,
+    "fail_open": true,
+    "redaction": {
+      "hash_repo_id": true,
+      "strip_file_paths": true,
+      "strip_user_identities": true,
+      "strip_code_snippets": true,
+      "scan_secrets_before_send": true
+    }
+  }
+}

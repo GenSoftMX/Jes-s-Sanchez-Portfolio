@@ -1,0 +1,10 @@
+---
+description: Run Vostok feature-delivery (I0/I1 direct path via AGENTS.md; I2 agreed path) for a software change request. Use when the user asks for /feature-delivery or an operational feature delivery workflow.
+alwaysApply: false
+---
+
+# feature-delivery (Cursor projection)
+
+1. I0/I1: `AGENTS.md` without reading the workflow. I2: `.vostok/workflows/feature-delivery.md` (short path first; detail only on demand). I3: stop (except Cold start / first use: do not abort in passive I3; follow the proposal gate in `AGENTS.md`).
+2. Do not rewrite stages. Do not invent D-H or `enforced`. Do not recreate `specs/**/evidence/`.
+3. This rule does not close Claude Code TUI Claim B / AC-03.

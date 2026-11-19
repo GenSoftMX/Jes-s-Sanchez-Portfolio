@@ -1,0 +1,40 @@
+{
+  "schema": "vostok.autonomy-policy.v1",
+  "permissions": {
+    "implementation": {
+      "auto_grades": [
+        "I0",
+        "I1"
+      ],
+      "fast_track_grades": [
+        "I2"
+      ],
+      "require_plan_for": [
+        "I3"
+      ]
+    },
+    "technical_approval": {
+      "required_from_grade": "I2",
+      "authority": "human_only"
+    },
+    "integration": {
+      "git_commit": "human_approval_required",
+      "merge_pr": "human_approval_required"
+    },
+    "deployment": {
+      "separate_from_technical_approval": true,
+      "authority": "human_approval_required"
+    }
+  },
+  "independent_audit": {
+    "required_from_grade": "I2",
+    "exempt_low_risk_i2_patterns": []
+  },
+  "mandatory_human_gates": [
+    "architecture_change",
+    "critical_contract_change",
+    "high_risk_escalation",
+    "sensitive_deployment"
+  ],
+  "avoid_redundant_reapproval_within_authorized_scope": true
+}

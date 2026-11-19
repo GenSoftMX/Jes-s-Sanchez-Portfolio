@@ -1,0 +1,10 @@
+---
+description: Present scope, options, diagrams, or review packages in chat. Apply when the user asks to see them or feature-delivery reaches trigger A–E; trigger E presents I2 spec/task before creation. Respect I0–I2 grade limits.
+alwaysApply: false
+---
+
+# present-information (Cursor projection)
+
+1. Read and follow `.vostok/skills/present-information/SKILL.md`.
+2. In I2, present spec/task in chat or Plan Mode before creating them; do not save the plan in the workspace before confirming. Creation confirmation does not start Build: show and verify the files and ask for separate authorization to implement.
+3. Showing ≠ deciding ≠ D-H. I0: omit.

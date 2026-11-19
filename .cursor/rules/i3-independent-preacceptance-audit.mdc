@@ -1,0 +1,9 @@
+---
+description: Mandatory separate I3 auditor before asking for D-H; contrasts requirements vs delivered change.
+alwaysApply: false
+---
+
+# i3-independent-preacceptance-audit — Cursor projection
+
+Read and follow `.vostok/skills/i3-independent-preacceptance-audit/SKILL.md` and
+workflow `.vostok/workflows/i3-independent-preacceptance-audit.md`.
