@@ -2,6 +2,8 @@
 
 Vostok's core lives in [`.vostok/`](.vostok/). These instructions accompany the target project's rules; file presence does not prove host load or `enforced` protection.
 
+The portfolio site is in `src/`. Its units and boundaries are in [`.vostok/architecture-contract.md`](.vostok/architecture-contract.md).
+
 ## How to Work
 
 1. **Alignment & preflight:** Compare the request against the project's purpose and active spec/task. In modular repos, locate upward the closest `AGENTS.md`.

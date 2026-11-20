@@ -1,0 +1,39 @@
+{
+  "targetDir": ".",
+  "totalFindings": 1,
+  "guides": [
+    {
+      "guideId": "dark-mode-toggle",
+      "retrieveCommand": "npx modern-web-guidance retrieve dark-mode-toggle",
+      "count": 1,
+      "rules": [
+        {
+          "ruleId": "dark-mode-toggle",
+          "summary": "Dark mode toggles that persist theme overrides in localStorage and toggle root .dark classes or data-theme attributes should update <meta name=\"color-scheme\"> (\"light dark\", \"light\", \"dark\") paired with CSS color-scheme and light-dark().",
+          "verifierRubric": {
+            "keepWhen": [
+              "JavaScript implements a user-facing dark/light theme override stored in localStorage and applies it by toggling a .dark/.dark-theme class or data-theme attribute on documentElement/body without updating <meta name=\"color-scheme\">."
+            ],
+            "dropWhen": [
+              "The code already updates <meta name=\"color-scheme\"> content (\"light dark\", \"light\", \"dark\").",
+              "The code only reads matchMedia(\"(prefers-color-scheme: dark)\") without a user toggle or localStorage override (covered by dark-mode).",
+              "The code switches multi-brand or syntax-editor color palettes (e.g. Monaco/Ace editor themes) rather than light/dark page color scheme."
+            ]
+          },
+          "count": 1,
+          "findings": [
+            {
+              "file": "src/layouts/BaseLayout.astro",
+              "line": 32,
+              "message": "Dark mode toggle persists theme state in localStorage and sets dataset.theme on the root element without updating <meta name=\"color-scheme\">; synchronize <meta name=\"color-scheme\"> with CSS color-scheme and light-dark().",
+              "lineContent": "document.documentElement.dataset.theme = theme;"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "activeRuleCount": 52,
+  "activeGuideCount": 38,
+  "note": "Checked 38 guides (52 deterministic rules; ~20% of the guidance corpus). Finding 1 item here only reflects deterministic legacy patterns; use 'search <topic>' for the rest of the catalog."
+}
