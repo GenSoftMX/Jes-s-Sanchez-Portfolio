@@ -1,0 +1,105 @@
+---
+import { projects } from '../../site-config/portfolio';
+
+interface Props {
+  lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+const projectsJson = JSON.stringify(projects);
+---
+<dialog id="projectModal" aria-labelledby="modalTitle" closedby="any">
+  <div class="modal-head">
+    <div>
+      <div class="overline" id="modalEyebrow">PROJECT</div>
+      <h3 id="modalTitle"></h3>
+    </div>
+    <button id="modalClose" class="modal-x" aria-label={lang === 'es' ? 'Cerrar' : 'Close'} type="button">×</button>
+  </div>
+  <div class="modal-content">
+    <p class="modal-lead" id="modalLead"></p>
+    <div class="modal-block">
+      <b id="problemTitle">{lang === 'es' ? 'El problema' : 'The challenge'}</b>
+      <p id="modalProblem"></p>
+    </div>
+    <div class="modal-block">
+      <b id="approachTitle">{lang === 'es' ? 'El enfoque' : 'The approach'}</b>
+      <p id="modalApproach"></p>
+    </div>
+    <div class="modal-block">
+      <b id="statusTitle">{lang === 'es' ? 'Estado' : 'Status'}</b>
+      <p id="modalStatus"></p>
+    </div>
+    <div class="modal-links" id="modalLinks"></div>
+  </div>
+</dialog>
+
+<script id="projects-data" type="application/json" set:html={projectsJson} />
+
+<script>
+  (() => {
+    'use strict';
+    const dataEl = document.getElementById('projects-data');
+    if (!dataEl) return;
+
+    const projects = JSON.parse(dataEl.textContent || '{}');
+    const modal = document.getElementById('projectModal') as HTMLDialogElement | null;
+    const lang = (document.documentElement.lang as 'es' | 'en') || 'es';
+
+    const $ = (id: string) => document.getElementById(id);
+
+    function renderProject(id: string) {
+      const p = projects[id];
+      if (!p) return;
+
+      const eyebrow = $('modalEyebrow');
+      const title = $('modalTitle');
+      const lead = $('modalLead');
+      const problemTitle = $('problemTitle');
+      const approachTitle = $('approachTitle');
+      const statusTitle = $('statusTitle');
+      const problem = $('modalProblem');
+      const approach = $('modalApproach');
+      const status = $('modalStatus');
+      const links = $('modalLinks');
+
+      if (eyebrow) eyebrow.textContent = p.eyebrow;
+      if (title) title.textContent = p.title;
+      if (lead) lead.textContent = p.lead[lang];
+      if (problemTitle) problemTitle.textContent = lang === 'es' ? 'El problema' : 'The challenge';
+      if (approachTitle) approachTitle.textContent = lang === 'es' ? 'El enfoque' : 'The approach';
+      if (statusTitle) statusTitle.textContent = lang === 'es' ? 'Estado' : 'Status';
+      if (problem) problem.textContent = p.problem[lang];
+      if (approach) approach.textContent = p.approach[lang];
+      if (status) status.textContent = p.status[lang];
+
+      if (links) {
+        links.replaceChildren();
+        p.links.forEach((l: any) => {
+          const a = document.createElement('a');
+          a.href = l.url;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.className = 'btn outline';
+          a.textContent = l[lang] + ' ↗';
+          links.appendChild(a);
+        });
+      }
+    }
+
+    document.querySelectorAll<HTMLElement>('[data-project]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const projectId = btn.dataset.project;
+        if (projectId && modal) {
+          renderProject(projectId);
+          modal.showModal();
+        }
+      });
+    });
+
+    $('modalClose')?.addEventListener('click', () => modal?.close());
+    modal?.addEventListener('click', e => {
+      if (e.target === modal) modal.close();
+    });
+  })();
+</script>

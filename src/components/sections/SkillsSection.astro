@@ -1,0 +1,68 @@
+---
+import { phrases } from '../../site-config/portfolio';
+
+interface Props {
+  lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+const t = phrases[lang];
+---
+<section class="section" id="habilidades">
+  <div class="wrap">
+    <div class="section-heading reveal">
+      <div>
+        <span class="overline" data-t="skillsLabel">{t.skillsLabel}</span>
+        <h2 class="heading" data-t="skillsTitle">{t.skillsTitle}</h2>
+        <p class="intro" data-t="skillsIntro">{t.skillsIntro}</p>
+      </div>
+    </div>
+    <div class="skills-grid">
+      <article class="skill-card reveal">
+        <h3 class="skill-head" data-t="skills1">{t.skills1}</h3>
+        <p class="skill-copy" data-t="skills1desc">{t.skills1desc}</p>
+        <div class="skill-tags">
+          <span class="chip">Flutter</span>
+          <span class="chip">Dart</span>
+          <span class="chip">Kotlin</span>
+          <span class="chip">Android</span>
+          <span class="chip">iOS</span>
+        </div>
+      </article>
+
+      <article class="skill-card reveal">
+        <h3 class="skill-head" data-t="skills2">{t.skills2}</h3>
+        <p class="skill-copy" data-t="skills2desc">{t.skills2desc}</p>
+        <div class="skill-tags">
+          <span class="chip">Architecture</span>
+          <span class="chip">Refactoring</span>
+          <span class="chip">CI/CD</span>
+          <span class="chip">Testing</span>
+        </div>
+      </article>
+
+      <article class="skill-card reveal">
+        <h3 class="skill-head" data-t="skills3">{t.skills3}</h3>
+        <p class="skill-copy" data-t="skills3desc">{t.skills3desc}</p>
+        <div class="skill-tags">
+          <span class="chip">AI Agents</span>
+          <span class="chip">LLMs</span>
+          <span class="chip">Prompt Engineering</span>
+          <span class="chip">MCP</span>
+        </div>
+      </article>
+
+      <article class="skill-card reveal">
+        <h3 class="skill-head" data-t="skills4">{t.skills4}</h3>
+        <p class="skill-copy" data-t="skills4desc">{t.skills4desc}</p>
+        <div class="skill-tags">
+          <span class="chip">C#</span>
+          <span class="chip">AWS</span>
+          <span class="chip">Firebase</span>
+          <span class="chip">Angular</span>
+          <span class="chip">SQL</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

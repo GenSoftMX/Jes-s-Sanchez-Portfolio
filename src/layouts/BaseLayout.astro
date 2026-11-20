@@ -1,0 +1,261 @@
+---
+import '../styles/global.css';
+import { phrases } from '../site-config/portfolio';
+import ProjectModal from '../components/ui/ProjectModal.astro';
+
+interface Props {
+  lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+const t = phrases[lang];
+const baseUrl = 'https://jesusdonaldosanchezinzunza.com';
+const canonicalUrl = `${baseUrl}${lang === 'en' ? '/en/' : '/'}`;
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#fafbfc" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script is:inline>
+      (() => {
+        let theme = '';
+        let savedTheme = '';
+        try {
+          const saved = localStorage.getItem('portfolio-theme');
+          if (saved === 'light' || saved === 'dark') savedTheme = theme = saved;
+        } catch {}
+        if (!theme) {
+          theme = window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+        document.querySelector('meta[name="color-scheme"]')?.setAttribute('content', savedTheme || 'light dark');
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#101820' : '#fafbfc');
+        document.documentElement.dataset.js = 'true';
+      })();
+    </script>
+    <meta name="description" content="Jesús Sánchez — Mobile Engineer @ Enersí. Desarrollo móvil, arquitectura de software, herramientas open source e ingeniería con agentes de IA." />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="es" href={`${baseUrl}/`} />
+    <link rel="alternate" hreflang="en" href={`${baseUrl}/en/`} />
+    <link rel="alternate" hreflang="x-default" href={`${baseUrl}/`} />
+    <meta property="og:site_name" content="Jesús Sánchez" />
+    <meta property="og:title" content="Jesús Sánchez · Mobile Engineer & Software Engineering" />
+    <meta property="og:description" content="Jesús Sánchez — Mobile Engineer @ Enersí. Desarrollo móvil, arquitectura de software, herramientas open source e ingeniería con agentes de IA." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={`${baseUrl}/portrait.webp`} />
+    <meta property="og:locale" content={lang === 'es' ? 'es_MX' : 'en_US'} />
+    <meta property="og:locale:alternate" content={lang === 'es' ? 'en_US' : 'es_MX'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Jesús Sánchez · Mobile Engineer & Software Engineering" />
+    <meta name="twitter:description" content="Jesús Sánchez — Mobile Engineer @ Enersí. Desarrollo móvil, arquitectura de software, herramientas open source e ingeniería con agentes de IA." />
+    <meta name="twitter:image" content={`${baseUrl}/portrait.webp`} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Jesús Sánchez · Mobile Engineer & Software Engineering</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{lang === 'es' ? 'Saltar al contenido' : 'Skip to content'}</a>
+    <header class="nav-shell">
+      <div class="wrap nav">
+        <a class="logo" href="#inicio" aria-label={lang === 'es' ? 'Jesús Sánchez, inicio' : 'Jesús Sánchez, home'}>
+          <span class="logo-mark">JS<i>/</i></span>
+          <span class="logo-txt">Jesús Sánchez<small>Mobile Engineer · AI Engineering</small></span>
+        </a>
+        <nav class="nav-links" id="navlinks" aria-label={lang === 'es' ? 'Navegación principal' : 'Main navigation'}>
+          <a href="#inicio">{t.navHome}</a>
+          <a href="#proyectos">{t.navProjects}</a>
+          <a href="#trayectoria">{t.navCareer}</a>
+          <a href="#investigacion">{t.navPaper}</a>
+          <a href="#sobre-mi">{t.navAbout}</a>
+        </nav>
+        <div class="nav-actions">
+          <nav class="lang" aria-label={lang === 'es' ? 'Idioma' : 'Language'}>
+            <a id="langES" href="/" class="lang-btn" aria-pressed={lang === 'es' ? 'true' : 'false'}>ES</a>
+            <a id="langEN" href="/en/" class="lang-btn" aria-pressed={lang === 'en' ? 'true' : 'false'}>EN</a>
+          </nav>
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            type="button"
+            aria-label={t.themeToDark}
+            aria-pressed="false"
+            title={t.themeToDark}
+            data-label-dark={t.themeToDark}
+            data-label-light={t.themeToLight}
+          >
+            <span aria-hidden="true">☾</span>
+          </button>
+          <a href="#contacto" class="btn dark small">{t.contact}</a>
+          <button
+            class="menu"
+            id="menuBtn"
+            type="button"
+            aria-expanded="false"
+            aria-controls="navlinks"
+            aria-label={lang === 'es' ? 'Abrir menú' : 'Open menu'}
+          >☰</button>
+        </div>
+      </div>
+      <div class="scrollline" id="progress"></div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+
+    <footer class="foot">
+      <div class="wrap">
+        <span><strong>JS/ Jesús Sánchez</strong> · <span>{t.footerNote}</span></span>
+        <span>© <span id="year">2026</span> · <span>{t.rights}</span></span>
+      </div>
+    </footer>
+
+    <ProjectModal lang={lang} />
+
+    <script>
+      (() => {
+        'use strict';
+        const $ = (id: string) => document.getElementById(id);
+        const themeStorageKey = 'portfolio-theme';
+        const themeToggle = $('themeToggle') as HTMLButtonElement | null;
+        let currentTheme: 'light' | 'dark' = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+
+        const labelToDark = themeToggle?.dataset.labelDark || 'Cambiar a tema oscuro';
+        const labelToLight = themeToggle?.dataset.labelLight || 'Cambiar a tema claro';
+
+        function syncThemeControl() {
+          if (!themeToggle) return;
+          const nextLabel = currentTheme === 'dark' ? labelToLight : labelToDark;
+          themeToggle.setAttribute('aria-label', nextLabel);
+          themeToggle.setAttribute('title', nextLabel);
+          themeToggle.setAttribute('aria-pressed', String(currentTheme === 'dark'));
+          const icon = themeToggle.querySelector('span');
+          if (icon) icon.textContent = currentTheme === 'dark' ? '☀' : '☾';
+        }
+
+        function applyTheme(theme: 'light' | 'dark', persist = false) {
+          currentTheme = theme;
+          document.documentElement.dataset.theme = theme;
+          document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#101820' : '#fafbfc');
+          const colorScheme = document.querySelector('meta[name="color-scheme"]');
+          let metaScheme = persist ? theme : readSavedTheme() || 'light dark';
+          if (persist) {
+            try {
+              const followsSystem = systemTheme ? (theme === 'dark') === systemTheme.matches : false;
+              if (followsSystem) {
+                localStorage.removeItem(themeStorageKey);
+                metaScheme = 'light dark';
+              } else {
+                localStorage.setItem(themeStorageKey, theme);
+              }
+            } catch {}
+          }
+          colorScheme?.setAttribute('content', metaScheme);
+          syncThemeControl();
+        }
+
+        function readSavedTheme(): 'light' | 'dark' | null {
+          try {
+            const saved = localStorage.getItem(themeStorageKey);
+            return saved === 'light' || saved === 'dark' ? saved : null;
+          } catch {
+            return null;
+          }
+        }
+
+        syncThemeControl();
+        themeToggle?.addEventListener('click', () => {
+          applyTheme(currentTheme === 'dark' ? 'light' : 'dark', true);
+        });
+
+        const systemTheme = window.matchMedia?.('(prefers-color-scheme: dark)');
+        if (!readSavedTheme() && systemTheme) {
+          systemTheme.addEventListener?.('change', event => {
+            if (!readSavedTheme()) applyTheme(event.matches ? 'dark' : 'light');
+          });
+        }
+        window.addEventListener('storage', event => {
+          if (event.key !== themeStorageKey) return;
+          const saved = readSavedTheme();
+          applyTheme(saved || (systemTheme?.matches ? 'dark' : 'light'));
+          document.querySelector('meta[name="color-scheme"]')?.setAttribute('content', saved || 'light dark');
+        });
+
+        // Mobile menu toggle
+        const menuBtn = $('menuBtn');
+        const navlinks = $('navlinks');
+        const lang = document.documentElement.lang || 'es';
+        const syncMenuControl = (open: boolean) => {
+          menuBtn?.setAttribute('aria-expanded', String(open));
+          menuBtn?.setAttribute('aria-label', open
+            ? lang === 'es' ? 'Cerrar menú' : 'Close menu'
+            : lang === 'es' ? 'Abrir menú' : 'Open menu');
+          if (menuBtn) menuBtn.textContent = open ? '×' : '☰';
+        };
+
+        menuBtn?.addEventListener('click', () => {
+          if (!navlinks) return;
+          const open = navlinks.classList.toggle('open');
+          syncMenuControl(open);
+        });
+
+        navlinks?.querySelectorAll('a').forEach(a => {
+          a.addEventListener('click', () => {
+            navlinks.classList.remove('open');
+            syncMenuControl(false);
+          });
+        });
+
+        // Intersection observer for reveals
+        const observer = new IntersectionObserver(
+          entries => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                observer.unobserve(e.target);
+              }
+            }
+          },
+          { threshold: 0.09, rootMargin: '0px 0px -12px 0px' }
+        );
+        document.querySelectorAll('.reveal').forEach(x => observer.observe(x));
+
+        // Scroll progress & active nav
+        const sections = Array.from(document.querySelectorAll('main section[id]')) as HTMLElement[];
+        let pending = false;
+        function updateScroll() {
+          const height = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = $('progress');
+          if (progress) {
+            progress.style.width = (height > 0 ? Math.max(0, Math.min(100, (window.scrollY / height) * 100)) : 0) + '%';
+          }
+          let current = 'inicio';
+          sections.forEach(s => {
+            if (s.getBoundingClientRect().top < 140) current = s.id;
+          });
+          navlinks?.querySelectorAll('a').forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+          });
+          pending = false;
+        }
+
+        window.addEventListener('scroll', () => {
+          if (!pending) {
+            pending = true;
+            requestAnimationFrame(updateScroll);
+          }
+        }, { passive: true });
+        updateScroll();
+
+        const yearEl = $('year');
+        if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+      })();
+    </script>
+  </body>
+</html>

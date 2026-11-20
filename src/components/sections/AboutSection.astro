@@ -1,0 +1,27 @@
+---
+import { phrases } from '../../site-config/portfolio';
+
+interface Props {
+  lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+const t = phrases[lang];
+---
+<section class="section white" id="sobre-mi">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <span class="overline" data-t="aboutLabel">{t.aboutLabel}</span>
+      <h2 class="heading" data-t="aboutTitle">{t.aboutTitle}</h2>
+      <div class="about-quote" data-t="aboutQuote">{t.aboutQuote}</div>
+    </div>
+    <div class="about-copy reveal">
+      <p data-t="aboutP1">{t.aboutP1}</p>
+      <p data-t="aboutP2">{t.aboutP2}</p>
+      <div class="education">
+        <strong data-t="educationHeading">{t.educationHeading}</strong>
+        <span data-t="educationText">{t.educationText}</span>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,30 @@
+---
+import { phrases } from '../../site-config/portfolio';
+
+interface Props {
+  lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+const t = phrases[lang];
+---
+<div class="specialties">
+  <div class="wrap specialties-grid">
+    <div class="specialty">
+      <b data-t="specialtyMobile">{t.specialtyMobile}</b>
+      <small data-t="specialtyMobileDetail">{t.specialtyMobileDetail}</small>
+    </div>
+    <div class="specialty">
+      <b data-t="specialtyArchitecture">{t.specialtyArchitecture}</b>
+      <small data-t="specialtyArchitectureDetail">{t.specialtyArchitectureDetail}</small>
+    </div>
+    <div class="specialty">
+      <b data-t="specialtyAI">{t.specialtyAI}</b>
+      <small data-t="specialtyAIDetail">{t.specialtyAIDetail}</small>
+    </div>
+    <div class="specialty">
+      <b data-t="specialtyTools">{t.specialtyTools}</b>
+      <small data-t="specialtyToolsDetail">{t.specialtyToolsDetail}</small>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,172 @@
+---
+import { phrases, roles } from '../../site-config/portfolio';
+
+interface Props {
+  lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+const t = phrases[lang];
+const initialRole = roles[0];
+const rolesJson = JSON.stringify(roles);
+---
+<section class="section timeline-zone" id="trayectoria">
+  <div class="wrap">
+    <div class="section-heading reveal">
+      <div>
+        <span class="overline" data-t="careerLabel">{t.careerLabel}</span>
+        <h2 class="heading" data-t="careerTitle">{t.careerTitle}</h2>
+        <p class="intro" data-t="careerIntro">{t.careerIntro}</p>
+      </div>
+    </div>
+    <div class="timeline-grid">
+      <div
+        class="timeline-nav reveal"
+        id="timelineNav"
+        role="group"
+        aria-label={lang === 'es' ? 'Posiciones profesionales' : 'Professional positions'}
+      >
+        {roles.map((r, idx) => (
+          <button
+            type="button"
+            class={`time-choice${idx === 0 ? ' selected' : ''}`}
+            aria-pressed={idx === 0 ? 'true' : 'false'}
+            data-role={r.id}
+          >
+            <span class="time-top">
+              <span>
+                <strong>{r.company} — {r.title}</strong>
+                {r.date[lang] && <small>{r.date[lang]}</small>}
+                <small>{r.mini[lang]}</small>
+              </span>
+              <span class="arrow">›</span>
+            </span>
+          </button>
+        ))}
+      </div>
+      <div class="experience-panel reveal" id="experiencePanel" aria-live="polite">
+        <div class="xp-top">
+          <div class="xp-id">
+            <div class="xp-logo">{initialRole.symbol}</div>
+            <div>
+              <h3>{initialRole.title}</h3>
+              <div class="xp-company">{initialRole.company}</div>
+            </div>
+          </div>
+          {initialRole.date[lang] && <span class="xp-date">{initialRole.date[lang]}</span>}
+        </div>
+        <p class="xp-summary">{initialRole.summary[lang]}</p>
+        <h4 style="font-size:0.8125rem;margin:0 0 13px">
+          {lang === 'es' ? 'Contribuciones principales' : 'Main contributions'}
+        </h4>
+        <div class="xp-points">
+          {initialRole.points[lang].map((point) => (
+            <div class="point">{point}</div>
+          ))}
+        </div>
+        <div class="xp-tags">
+          {initialRole.tags.map((tag) => (
+            <span class="chip">{tag}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script id="timeline-data" type="application/json" set:html={rolesJson} />
+
+<script>
+  (() => {
+    'use strict';
+    const dataEl = document.getElementById('timeline-data');
+    if (!dataEl) return;
+
+    const roles = JSON.parse(dataEl.textContent || '[]');
+    const lang = (document.documentElement.lang as 'es' | 'en') || 'es';
+    const panel = document.getElementById('experiencePanel');
+    const buttons = document.querySelectorAll<HTMLButtonElement>('.time-choice');
+
+    function escapeHTML(s: string): string {
+      return String(s).replace(/[&<>"']/g, c => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      }[c] || c));
+    }
+
+    function selectRole(roleId: string) {
+      const r = roles.find((x: any) => x.id === roleId);
+      if (!panel || !r) return;
+
+      buttons.forEach(btn => {
+        const isSelected = btn.dataset.role === roleId;
+        btn.classList.toggle('selected', isSelected);
+        btn.setAttribute('aria-pressed', String(isSelected));
+      });
+
+      panel.style.animation = 'none';
+      void panel.offsetWidth;
+      panel.style.animation = '';
+
+      let note = '';
+      if (r.note) {
+        const noteHeading = r.id === 'wadi'
+          ? (lang === 'es' ? 'De Wadi a JIntent' : 'From Wadi to JIntent')
+          : (lang === 'es' ? 'Iniciativa profesional' : 'Professional initiative');
+
+        const noteLink = r.link
+          ? ` <a target="_blank" rel="noopener noreferrer" href="${escapeHTML(r.link.url)}">${escapeHTML(r.link.label)} ↗</a>`
+          : '';
+
+        note = `
+          <div class="xp-note">
+            <div class="xp-note-icon">↗</div>
+            <div>
+              <h4>${escapeHTML(noteHeading)}</h4>
+              <p>${escapeHTML(r.note[lang])}${noteLink}</p>
+            </div>
+          </div>`;
+      }
+
+      const dateHtml = r.date[lang] ? `<span class="xp-date">${escapeHTML(r.date[lang])}</span>` : '';
+      const pointsHtml = r.points[lang].map((s: string) => `<div class="point">${escapeHTML(s)}</div>`).join('');
+      const tagsHtml = r.tags.map((s: string) => `<span class="chip">${escapeHTML(s)}</span>`).join('');
+      const contribHeading = lang === 'es' ? 'Contribuciones principales' : 'Main contributions';
+
+      panel.innerHTML = `
+        <div class="xp-top">
+          <div class="xp-id">
+            <div class="xp-logo">${escapeHTML(r.symbol)}</div>
+            <div>
+              <h3>${escapeHTML(r.title)}</h3>
+              <div class="xp-company">${escapeHTML(r.company)}</div>
+            </div>
+          </div>
+          ${dateHtml}
+        </div>
+        <p class="xp-summary">${escapeHTML(r.summary[lang])}</p>
+        <h4 style="font-size:0.8125rem;margin:0 0 13px">${contribHeading}</h4>
+        <div class="xp-points">${pointsHtml}</div>
+        ${note}
+        <div class="xp-tags">${tagsHtml}</div>
+      `;
+
+      if (window.innerWidth < 760) {
+        panel.scrollIntoView({
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+          block: 'nearest'
+        });
+      }
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const roleId = btn.dataset.role;
+        if (roleId) selectRole(roleId);
+      });
+    });
+  })();
+</script>

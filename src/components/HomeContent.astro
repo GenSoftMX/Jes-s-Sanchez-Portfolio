@@ -1,0 +1,24 @@
+---
+import HeroSection from './sections/HeroSection.astro';
+import SpecialtiesSection from './sections/SpecialtiesSection.astro';
+import ProjectsSection from './sections/ProjectsSection.astro';
+import CareerSection from './sections/CareerSection.astro';
+import ResearchSection from './sections/ResearchSection.astro';
+import SkillsSection from './sections/SkillsSection.astro';
+import AboutSection from './sections/AboutSection.astro';
+import ContactSection from './sections/ContactSection.astro';
+
+interface Props {
+  lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+---
+<HeroSection lang={lang} />
+<SpecialtiesSection lang={lang} />
+<ProjectsSection lang={lang} />
+<CareerSection lang={lang} />
+<ResearchSection lang={lang} />
+<SkillsSection lang={lang} />
+<AboutSection lang={lang} />
+<ContactSection lang={lang} />

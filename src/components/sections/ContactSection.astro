@@ -1,0 +1,48 @@
+---
+import { phrases } from '../../site-config/portfolio';
+
+interface Props {
+  lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+const t = phrases[lang];
+---
+<section class="contact" id="contacto">
+  <div class="wrap contact-grid">
+    <div>
+      <span class="overline" style="color:#9cb9cc" data-t="contactOverline">{t.contactOverline}</span>
+      <h2 data-t="contactHeading">{t.contactHeading}</h2>
+      <p data-t="contactText">{t.contactText}</p>
+    </div>
+    <div class="contact-actions">
+      <a
+        href="mailto:jdsancheza0@gmail.com?subject=Contacto%20desde%20tu%20portafolio"
+        class="contact-plain contact-email"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-t="contactEmail"
+      >
+        {t.contactEmail}
+      </a>
+      <a
+        href="https://github.com/GenSoftMX"
+        class="contact-plain"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-t="contactGithub"
+      >
+        {t.contactGithub}
+      </a>
+      <a
+        href="https://www.linkedin.com/in/jdsanchez94/"
+        class="contact-plain"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-t="contactLinkedIn"
+      >
+        {t.contactLinkedIn}
+      </a>
+    </div>
+  </div>
+</section>

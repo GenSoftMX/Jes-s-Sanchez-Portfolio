@@ -1,0 +1,53 @@
+---
+import { phrases } from '../../site-config/portfolio';
+
+interface Props {
+  lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+const t = phrases[lang];
+---
+<section class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div class="reveal visible">
+      <span class="hero-kicker">
+        <i class="dot"></i>
+        <span data-t="heroEyebrow">{t.heroEyebrow}</span>
+      </span>
+      <h1>Jesús <strong>Sánchez.</strong></h1>
+      <div class="hero-role">
+        <span data-t="heroRole">{t.heroRole}</span>
+        <small data-t="heroFocus">{t.heroFocus}</small>
+      </div>
+      <p class="hero-description" data-t="heroDescription">{t.heroDescription}</p>
+      <div class="hero-cta">
+        <a href="#trayectoria" class="btn dark">
+          <span data-t="viewCareer">{t.viewCareer}</span>
+          <span aria-hidden="true">→</span>
+        </a>
+        <a href="#proyectos" class="btn outline">
+          <span data-t="viewProjects">{t.viewProjects}</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <div class="hero-mini">
+        <strong data-t="since2016">{t.since2016}</strong>
+        <i class="sep"></i>
+        <span data-t="openResearch">{t.openResearch}</span>
+      </div>
+    </div>
+    <div class="photo-area reveal visible">
+      <div class="photo-frame" id="portrait">
+        <img
+          src="/portrait.webp"
+          alt="Retrato profesional de Jesús Sánchez"
+          width="1050"
+          height="1050"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </div>
+</section>

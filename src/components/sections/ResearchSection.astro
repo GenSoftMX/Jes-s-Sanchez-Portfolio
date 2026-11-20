@@ -1,0 +1,46 @@
+---
+import { phrases } from '../../site-config/portfolio';
+
+interface Props {
+  lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+const t = phrases[lang];
+---
+<section class="section paper-section" id="investigacion">
+  <div class="wrap">
+    <div class="section-heading reveal">
+      <div>
+        <span class="overline" data-t="researchLabel">{t.researchLabel}</span>
+        <h2 class="heading" data-t="researchTitle">{t.researchTitle}</h2>
+        <p class="intro" data-t="researchIntro">{t.researchIntro}</p>
+      </div>
+    </div>
+    <div class="paper-feature reveal">
+      <div class="paper-art">
+        <span class="top">RESEARCH PAPER · 2026</span>
+        <div class="cover-title">Agentic Architecture for Software Development</div>
+        <div class="cover-bottom">Jesús Sánchez · Zenodo</div>
+      </div>
+      <div class="paper-text">
+        <span class="overline">WHITEPAPER · DOI</span>
+        <h3>Agentic Architecture for Software Development</h3>
+        <p data-t="paperDescription">{t.paperDescription}</p>
+        <div class="paper-meta">
+          <span class="chip">10.5281/zenodo.24361807</span>
+          <span class="chip">Zenodo</span>
+          <span class="chip">2026</span>
+        </div>
+        <div class="paper-actions">
+          <a class="btn dark" href="https://doi.org/10.5281/zenodo.24361807" target="_blank" rel="noopener noreferrer">
+            <span data-t="readPaper">{t.readPaper}</span> ↗
+          </a>
+          <a class="btn outline" href="https://doi.org/10.5281/zenodo.24361806" target="_blank" rel="noopener noreferrer">
+            <span data-t="allVersions">{t.allVersions}</span> ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,101 @@
+---
+import { phrases } from '../../site-config/portfolio';
+
+interface Props {
+  lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+const t = phrases[lang];
+---
+<section class="section" id="proyectos">
+  <div class="wrap">
+    <div class="section-heading reveal">
+      <div>
+        <span class="overline" data-t="workLabel">{t.workLabel}</span>
+        <h2 class="heading" data-t="workTitle">{t.workTitle}</h2>
+        <p class="intro" data-t="workIntro">{t.workIntro}</p>
+      </div>
+      <a href="#investigacion" class="inline-link" data-t="viewPublication">{t.viewPublication}</a>
+    </div>
+    <div class="projects-grid">
+      <article class="proj-card reveal">
+        <div class="proj-symbol">◇</div>
+        <div class="proj-tag">AI ENGINEERING</div>
+        <h3>Vostok AI Workflow</h3>
+        <p data-t="vostokShort">{t.vostokShort}</p>
+        <div class="tags">
+          <span class="chip">Governance</span>
+          <span class="chip">Workflows</span>
+          <span class="chip">Verification</span>
+        </div>
+        <div class="card-bottom">
+          <button class="open-card" type="button" data-project="vostok">
+            <span data-t="exploreProject">{t.exploreProject}</span> →
+          </button>
+        </div>
+      </article>
+
+      <article class="proj-card reveal">
+        <div class="proj-symbol" style="font-family:'Manrope',sans-serif">J</div>
+        <div class="proj-tag">FLUTTER / OPEN SOURCE</div>
+        <h3>JIntent</h3>
+        <p data-t="jintentShort">{t.jintentShort}</p>
+        <div class="tags">
+          <span class="chip">Flutter</span>
+          <span class="chip">Dart</span>
+          <span class="chip">Architecture</span>
+        </div>
+        <div class="card-bottom">
+          <button class="open-card" type="button" data-project="jintent">
+            <span data-t="exploreProject">{t.exploreProject}</span> →
+          </button>
+        </div>
+      </article>
+
+      <article class="proj-card reveal">
+        <div class="proj-symbol">⌁</div>
+        <div class="proj-tag">PROTOTYPE / AI AGENTS</div>
+        <h3>Support Triage AI</h3>
+        <p data-t="supportShort">{t.supportShort}</p>
+        <div class="tags">
+          <span class="chip">AI Agents</span>
+          <span class="chip">Jira</span>
+          <span class="chip">Slack</span>
+        </div>
+        <div class="card-bottom">
+          <button class="open-card" type="button" data-project="support">
+            <span data-t="exploreProject">{t.exploreProject}</span> →
+          </button>
+        </div>
+      </article>
+
+      <article class="proj-card reveal">
+        <div class="proj-symbol">▦</div>
+        <div class="proj-tag">PRODUCT / IN DEVELOPMENT</div>
+        <h3>Lakam Flow</h3>
+        <p data-t="lakamShort">{t.lakamShort}</p>
+        <div class="tags">
+          <span class="chip">Scheduling</span>
+          <span class="chip">Analytics</span>
+          <span class="chip">AI</span>
+        </div>
+        <div class="card-bottom">
+          <button class="open-card" type="button" data-project="lakam">
+            <span data-t="exploreProject">{t.exploreProject}</span> →
+          </button>
+        </div>
+      </article>
+    </div>
+
+    <div class="mini-product reveal">
+      <div>
+        <strong data-t="projectEthicsTitle">{t.projectEthicsTitle}</strong>
+        <p data-t="projectEthicsCopy">{t.projectEthicsCopy}</p>
+      </div>
+      <button class="btn outline small" type="button" data-project="support" data-t="knowMore">
+        {t.knowMore}
+      </button>
+    </div>
+  </div>
+</section>
