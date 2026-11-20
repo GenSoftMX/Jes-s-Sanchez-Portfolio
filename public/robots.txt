@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jesusdonaldosanchezinzunza.com/sitemap.xml
+Sitemap: https://gensoftmx.github.io/Jes-s-Sanchez-Portfolio/sitemap.xml

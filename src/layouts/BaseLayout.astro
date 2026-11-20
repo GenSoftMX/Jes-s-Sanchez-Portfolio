@@ -9,8 +9,11 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = phrases[lang];
-const baseUrl = 'https://jesusdonaldosanchezinzunza.com';
-const canonicalUrl = `${baseUrl}${lang === 'en' ? '/en/' : '/'}`;
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
+const site = 'https://gensoftmx.github.io';
+const baseUrl = `${site}${base}`.replace(/\/$/, '');
+const canonicalUrl = `${baseUrl}${lang === 'es' ? '/es/' : '/'}`;
 ---
 <!doctype html>
 <html lang={lang}>
@@ -31,18 +34,28 @@ const canonicalUrl = `${baseUrl}${lang === 'en' ? '/en/' : '/'}`;
           if (saved === 'light' || saved === 'dark') savedTheme = theme = saved;
         } catch {}
         if (!theme) {
-          theme = window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          theme = 'light';
         }
         document.documentElement.dataset.theme = theme;
-        document.querySelector('meta[name="color-scheme"]')?.setAttribute('content', savedTheme || 'light dark');
+        document.querySelector('meta[name="color-scheme"]')?.setAttribute('content', savedTheme || 'light');
         document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#101820' : '#fafbfc');
         document.documentElement.dataset.js = 'true';
       })();
     </script>
+    <script is:inline define:vars={{ base }}>
+      (() => {
+        try {
+          const path = window.location.pathname;
+          if (!path.includes('/es') && localStorage.getItem('portfolio-lang') === 'es') {
+            window.location.replace(`${base}es/`);
+          }
+        } catch {}
+      })();
+    </script>
     <meta name="description" content="Jesús Sánchez — Mobile Engineer @ Enersí. Desarrollo móvil, arquitectura de software, herramientas open source e ingeniería con agentes de IA." />
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="alternate" hreflang="es" href={`${baseUrl}/`} />
-    <link rel="alternate" hreflang="en" href={`${baseUrl}/en/`} />
+    <link rel="alternate" hreflang="en" href={`${baseUrl}/`} />
+    <link rel="alternate" hreflang="es" href={`${baseUrl}/es/`} />
     <link rel="alternate" hreflang="x-default" href={`${baseUrl}/`} />
     <meta property="og:site_name" content="Jesús Sánchez" />
     <meta property="og:title" content="Jesús Sánchez · Mobile Engineer & Software Engineering" />
@@ -56,7 +69,7 @@ const canonicalUrl = `${baseUrl}${lang === 'en' ? '/en/' : '/'}`;
     <meta name="twitter:title" content="Jesús Sánchez · Mobile Engineer & Software Engineering" />
     <meta name="twitter:description" content="Jesús Sánchez — Mobile Engineer @ Enersí. Desarrollo móvil, arquitectura de software, herramientas open source e ingeniería con agentes de IA." />
     <meta name="twitter:image" content={`${baseUrl}/portrait.webp`} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
     <title>Jesús Sánchez · Mobile Engineer & Software Engineering</title>
   </head>
   <body>
@@ -76,8 +89,8 @@ const canonicalUrl = `${baseUrl}${lang === 'en' ? '/en/' : '/'}`;
         </nav>
         <div class="nav-actions">
           <nav class="lang" aria-label={lang === 'es' ? 'Idioma' : 'Language'}>
-            <a id="langES" href="/" class="lang-btn" aria-pressed={lang === 'es' ? 'true' : 'false'}>ES</a>
-            <a id="langEN" href="/en/" class="lang-btn" aria-pressed={lang === 'en' ? 'true' : 'false'}>EN</a>
+            <a id="langES" href={`${base}es/`} class="lang-btn" aria-pressed={lang === 'es' ? 'true' : 'false'}>ES</a>
+            <a id="langEN" href={base} class="lang-btn" aria-pressed={lang === 'en' ? 'true' : 'false'}>EN</a>
           </nav>
           <button
             class="theme-toggle"
@@ -172,6 +185,13 @@ const canonicalUrl = `${baseUrl}${lang === 'en' ? '/en/' : '/'}`;
         syncThemeControl();
         themeToggle?.addEventListener('click', () => {
           applyTheme(currentTheme === 'dark' ? 'light' : 'dark', true);
+        });
+
+        $('langES')?.addEventListener('click', () => {
+          try { localStorage.setItem('portfolio-lang', 'es'); } catch {}
+        });
+        $('langEN')?.addEventListener('click', () => {
+          try { localStorage.setItem('portfolio-lang', 'en'); } catch {}
         });
 
         const systemTheme = window.matchMedia?.('(prefers-color-scheme: dark)');
