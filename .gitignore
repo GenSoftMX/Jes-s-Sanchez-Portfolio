@@ -2,3 +2,8 @@
 .vostok/events.jsonl
 .vostok/metrics.jsonl
 .vostok/backups/
+
+# Astro build and dependencies
+node_modules/
+dist/
+.astro/
